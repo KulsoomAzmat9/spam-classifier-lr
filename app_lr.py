@@ -24,7 +24,7 @@ model.fit(X_vec, y)
 y_pred = model.predict(X_vec)
 accuracy = accuracy_score(y, y_pred)
 # 6. Show accuracy
-st.write(f"*Accuracy: {acc*100:.2f}%*")
+st.write(f"*Accuracy: {accuracy*100:.2f}%*")
 
 # 7. Test input
 user_input = st.text_input("Enter an email to test:")
