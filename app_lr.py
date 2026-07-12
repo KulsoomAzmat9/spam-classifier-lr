@@ -17,17 +17,13 @@ y = df['label']
 # 3. Convert text to numbers
 vectorizer = TfidfVectorizer(stop_words='english')
 X_vec = vectorizer.fit_transform(X)
-
 # 4. Split train/test
-X_train, X_test, y_train, y_test = train_test_split(X_vec, y, test_size=0.2, random_state=42)
-
 # 5. Train model
 model = LogisticRegression(max_iter=200)
-model.fit(X_train, y_train)
-
+model.fit(X_vec, y)
+y_pred = model.predict(X_vec)
+accuracy = accuracy_score(y, y_pred)
 # 6. Show accuracy
-y_pred = model.predict(X_test)
-acc = accuracy_score(y_test, y_pred)
 st.write(f"*Accuracy: {acc*100:.2f}%*")
 
 # 7. Test input
