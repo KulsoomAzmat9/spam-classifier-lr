@@ -1,4 +1,4 @@
-[1:06 pm, 15/07/2026] 🇵🇸✨🇸🇩🤲🇵🇰 somy: import streamlit as st
+import streamlit as st
 import pandas as pd
 import joblib
 from sklearn.model_selection import train_test_split
