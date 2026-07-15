@@ -28,21 +28,6 @@ st.write("*Data Preview - First 5 Rows:*")
 st.dataframe(df.head())
 
 # 3. CLEAN & TRAIN
-df = df.dropna(subset=['text', 'label'])
-df['text'] = df['text'].astype(str)
-df['label'] = df['label'].map({'not spam': 0, 'spam': 1})
-
-st.subheader("2. Training Model...")
-st.write(f"*Total rows used for training:* {len(df)}")
-
-X = df['text']
-y = df['label']
-vectorizer = CountVectorizer()
-X_vec = vectorizer.fit_transform(X)
-X_train, X_test, y_train, y_test = train_test_split(X_vec, y, test_size=0.2, random_state=42)
-
-model = LogisticRegression(max_iter=1000) # 2. CHANGED THIS LINE
-model.fit(X_train, y_train)
 
 joblib.dump(model, 'spam_model_lr.joblib') # 3. CHANGED NAME
 joblib.dump(vectorizer, 'vectorizer_lr.joblib')
