@@ -1,1 +1,1 @@
-# spam-classifier-lr
+sifier-lr
