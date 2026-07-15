@@ -30,7 +30,7 @@ st.dataframe(df.head())
 # 3. CLEAN & TRAIN
 df = df.dropna(subset=['text', 'label'])
 df['text'] = df['text'].astype(str)
-df['label'] = df['label'].astype(int)
+df['label'] = df['label'].map({'not spam': 0, 'spam': 1})
 
 st.subheader("2. Training Model...")
 st.write(f"*Total rows used for training:* {len(df)}")
