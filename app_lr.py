@@ -22,9 +22,9 @@ except FileNotFoundError:
 df.columns = df.columns.str.strip().str.lower()
 
 st.subheader("1. Dataset Information")
-st.write("*Columns in your file:*")
+st.write("Columns in file:")
 st.code(list(df.columns))
-st.write("*Data Preview - First 5 Rows:*")
+st.write("Data Preview - First 5 Rows:")
 st.dataframe(df.head())
 
 # 3. CLEAN & TRAIN
@@ -37,7 +37,7 @@ df['label'] = df['label'].map({'not spam': 0, 'spam': 1}) # converts to 0 and 1
 df = df.dropna(subset=['label']) # remove any rows that failed to map
 df['label'] = df['label'].astype(int)
 st.subheader("2. Training Model...")
-st.write(f"*Total rows used for training:* {len(df)}")
+st.write(f"Total rows used for training: {len(df)}")
 # 4. TRAIN
 X = df['text']
 y = df['label']
@@ -46,7 +46,7 @@ X_vec = vectorizer.fit_transform(X)
 X_train, X_test, y_train, y_test = train_test_split(X_vec, y, test_size=0.2, random_state=42)
 model = LogisticRegression(max_iter=1000)
 model.fit(X_train, y_train)
-joblib.dump(model, 'spam_model_lr.joblib') # 3. CHANGED NAME
+joblib.dump(model, 'spam_model_lr.joblib') 
 joblib.dump(vectorizer, 'vectorizer_lr.joblib')
 st.success("✅ Model Trained and Saved!")
 
